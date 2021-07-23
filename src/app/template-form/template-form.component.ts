@@ -15,7 +15,7 @@ export class TemplateFormComponent implements OnInit {
  
   addDevice(form:NgForm){
     // alert("Add Device");
-    // console.log(form.value);
+    console.log(form.value);
     this.deviceDetails.emit(form.value);
   }
 }
