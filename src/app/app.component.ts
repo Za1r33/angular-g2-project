@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,Output, EventEmitter } from '@angular/core';
+import { Device } from './models';
+
 
 @Component({
   selector: 'app-root',
@@ -6,11 +8,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  title = "My First Angular Project.";
-  appMessage = "";
+  @Output() buttonEvent= new EventEmitter();
 
-  appEvent(event:any){
-    this.appMessage = event;
+  title = "My first Angular Component.";
+  appMessage = "from AppComponent to FirstComponent";
+  deviceDetails: any;
+
+
+  devices: Device[] = [
+    {
+      name:  "Device01",
+      brand: "Vivo",
+      model: "Y20i",
+      year: 2020,
+      serial: "*#06#"
+    },
+    {
+      name:  "Device02",
+      brand: "Oppo",
+      model: "Reno5",
+      year: 2021,
+      serial: "*#06#"
+    }
+  ]
+ 
+
+  addNewDevice(devices:Device){
+    this.devices.push(devices);
   }
-}
+
+ }
+
+ 
+ 
