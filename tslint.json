@@ -4,6 +4,8 @@
     "codelyzer"
   ],
   "rules": {
+    "strict":false,
+    "strictNullChecks": false,
     "align": {
       "options": [
         "parameters",

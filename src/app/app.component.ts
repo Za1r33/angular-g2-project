@@ -12,11 +12,21 @@ export class AppComponent {
 
   title = "My first Angular Component.";
   appMessage = "from AppComponent to FirstComponent";
-  deviceDetails: any;
+  deviceDetail?: Device = {
+    id: undefined,
+    name: "",
+    brand: "",
+    model: "",
+    year: 0,
+    serial: ""
 
+  };
+
+  showUpdate: boolean = false;
 
   devices: Device[] = [
     {
+      id: 1,
       name:  "Device01",
       brand: "Vivo",
       model: "Y20i",
@@ -24,6 +34,7 @@ export class AppComponent {
       serial: "*#06#"
     },
     {
+      id:2,
       name:  "Device02",
       brand: "Oppo",
       model: "Reno5",
@@ -32,11 +43,20 @@ export class AppComponent {
     }
   ]
  
+  selectedDevice!: Device;
 
+  updateDevice(value:number){
+    this.showUpdate=true;
+    console.log(value);
+    this.deviceDetail = this.devices.find(device => device.id === value);
+  }
   addNewDevice(devices:Device){
     this.devices.push(devices);
   }
-
+ updateDisplay(value: any){
+  this.showUpdate=false;
+  console.log(value, 'app');
+ }
  }
 
  

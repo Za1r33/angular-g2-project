@@ -1,0 +1,30 @@
+<h1>Reactice Form</h1>
+
+<form [formGroup]="updateForm" (ngSubmit)="updateDevice()">
+    <input formControlName="id" id="id" type="hidden">
+    <label for="name">Device Name:</label>
+    <input formControlName="name" id="name">
+
+    <br>
+    <label for="brand">Device Brand:</label>
+    <input formControlName="brand" type="text" id="brand">
+
+    <br>
+    <label for="model">Device Model:</label>
+    <input formControlName="model" type="text" id="model">
+
+    <br>
+    <label for="year">Device Year:</label>
+    <input formControlName="year" type="text" id="year">
+
+    <br>
+    <label for="serial">Device Serial:</label>
+    <input formControlName="serial" type="text" id="serial">
+
+    <br>
+    <label for="brand">Device Brand:</label>
+    <input formControlName="name" type="text" id="brand">
+    
+    <br>
+    <button type="submit">Submit</button>
+</form>
