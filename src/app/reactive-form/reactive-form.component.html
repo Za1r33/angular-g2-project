@@ -1,7 +1,8 @@
-<h1>Reactice Form</h1>
+<h1>Reactive Form</h1>
 
 <form [formGroup]="updateForm" (ngSubmit)="updateDevice()">
     <input formControlName="id" id="id" type="hidden">
+
     <label for="name">Device Name:</label>
     <input formControlName="name" id="name">
 

@@ -53,11 +53,13 @@ export class AppComponent {
   addNewDevice(devices:Device){
     this.devices.push(devices);
   }
- updateDisplay(value: any){
-  this.showUpdate=false;
-  console.log(value, 'app');
- }
- }
+  updateDisplay(value: any){
+    this.showUpdate=false;
+    let index=this.devices.findIndex(device => device.id == value.id);
+    this.devices[index] = value;
+    console.log(value, 'app');
+  }
+}
 
  
  
