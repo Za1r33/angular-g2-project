@@ -7,7 +7,9 @@ import { Device } from './models';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+
   @Output() buttonEvent= new EventEmitter();
 
   title = "My first Angular Component.";
@@ -50,9 +52,11 @@ export class AppComponent {
     console.log(value);
     this.deviceDetail = this.devices.find(device => device.id === value);
   }
+
   addNewDevice(devices:Device){
     this.devices.push(devices);
   }
+  
   updateDisplay(value: any){
     this.showUpdate=false;
     let index=this.devices.findIndex(device => device.id == value.id);

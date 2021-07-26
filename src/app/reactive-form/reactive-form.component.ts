@@ -18,7 +18,8 @@ export class ReactiveFormComponent implements OnInit {
     serial: ""
 
   };
-@Output() update = new EventEmitter();
+  
+  @Output() update = new EventEmitter();
 
   updateForm = new FormGroup({
     id : new FormControl(''),
@@ -42,7 +43,6 @@ export class ReactiveFormComponent implements OnInit {
 
     })
   }
-
 
   updateDevice(){
     // alert('update device')

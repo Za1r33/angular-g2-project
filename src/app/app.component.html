@@ -4,20 +4,18 @@
 <div *ngIf = "!showUpdate">
   <div *ngFor = "let deviceDetail of devices">
     <app-device-details
-     [deviceDetail]= "deviceDetail"
-     (updateDetail)= "updateDevice($event)"
+      [deviceDetail]= "deviceDetail"
+      (updateDetail)= "updateDevice($event)"
     ></app-device-details>
 
   </div>
 </div>
 
 <div *ngIf = "showUpdate">
-<app-reactive-form
- [device]= "deviceDetail"
- (update)="updateDisplay($event)"
-
-></app-reactive-form>
-
+  <app-reactive-form
+    [device]= "deviceDetail"
+    (update)="updateDisplay($event)"
+  ></app-reactive-form>
 
 </div>
 
