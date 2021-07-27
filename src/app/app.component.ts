@@ -25,32 +25,14 @@ export class AppComponent {
   };
 
   showUpdate: boolean = false;
-
-  devices: Device[] = [
-    {
-      id: 1,
-      name:  "Device01",
-      brand: "Vivo",
-      model: "Y20i",
-      year: 2020,
-      serial: "*#06#"
-    },
-    {
-      id:2,
-      name:  "Device02",
-      brand: "Oppo",
-      model: "Reno5",
-      year: 2021,
-      serial: "*#06#"
-    }
-  ]
  
   selectedDevice!: Device;
+  devices: any;
 
   updateDevice(value:number){
     this.showUpdate=true;
     console.log(value);
-    this.deviceDetail = this.devices.find(device => device.id === value);
+    this.deviceDetail = this.devices.find((device: { id: number; }) => device.id === value);
   }
 
   addNewDevice(devices:Device){
@@ -59,7 +41,7 @@ export class AppComponent {
   
   updateDisplay(value: any){
     this.showUpdate=false;
-    let index=this.devices.findIndex(device => device.id == value.id);
+    let index=this.devices.findIndex((device: { id: any; }) => device.id == value.id);
     this.devices[index] = value;
     console.log(value, 'app');
   }
