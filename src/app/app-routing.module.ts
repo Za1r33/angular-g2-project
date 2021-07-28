@@ -7,7 +7,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 const routes: Routes = [
   { path: 'list', component: DeviceListComponent, pathMatch: 'full' },
   { path: 'add', component: TemplateFormComponent, pathMatch: 'full'},
-  { path: 'update', component: ReactiveFormComponent, pathMatch: 'full'},
+  { path: 'update/:id', component: ReactiveFormComponent, pathMatch: 'full'},
 
 ];
 
