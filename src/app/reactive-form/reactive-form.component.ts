@@ -1,21 +1,28 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Device } from '../models';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { DeviceService } from '../device.service';
-
-
+import { Device } from '../models';
 
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
   styleUrls: ['./reactive-form.component.css']
 })
-
 export class ReactiveFormComponent implements OnInit {
-  @Output() update = new EventEmitter();
 
-  device?: Device;
+  @Input() device?: Device= {
+    id: undefined,
+    name: "",
+    brand: "",
+    model: "",
+    year: 0,
+    serial: ""
+
+  };
+// device: Device;
+
+@Output() update = new EventEmitter();
 
   updateForm = new FormGroup({
     id : new FormControl(''),
@@ -26,15 +33,19 @@ export class ReactiveFormComponent implements OnInit {
     serial : new FormControl('')
   });
 
-  constructor(
-    private router: Router,
-    private deviceService: DeviceService,
-    private route: ActivatedRoute
-    ) { }
 
-  ngOnInit(): void {
+  constructor(
+      private router: Router,
+      private deviceService: DeviceService,
+      private route: ActivatedRoute
+      ) { }
+
+
+
+  ngOnInit() {
     this.device = this.deviceService
-    .getDevice(parseInt(this.route.snapshot.paramMap.get('id') || ''))
+    .getDevice(parseInt(this.route.snapshot.paramMap.get('id') || '' ))
+
 
     this.updateForm = new FormGroup({
       id: new FormControl(this.device?.id),
@@ -48,7 +59,14 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   updateDevice(){
+    // alert('update device')
+    // console.log(this.updateForm.value);
+    // this.update.emit(this.updateForm.value);
     this.deviceService.updateDevice(this.updateForm.value);
     this.router.navigate(['/list']);
   }
+ 
+
+
+  
 }

@@ -1,30 +1,32 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
+import { DeviceService } from '../device.service';
 import { Device } from './../models';
-import { Router } from '@angular/router'
-import { DeviceService} from './../device.service'
 
 @Component({
   selector: 'app-device-details',
   templateUrl: './device-details.component.html',
-  styleUrls: ['./device-details.component.css']
+  styleUrls: ['./device-details.component.css'],
+  styles: ['div {border: 2px solid black}', 'div {width:500px}', 'div {border-radius:5px}', 'div {padding:5px}', 'div {margin-top:20px}']
 })
 export class DeviceDetailsComponent implements OnInit {
-  id!: number;
 
-  @Input() deviceDetail!: Device;
-  @Output() updateDetail = new EventEmitter();
+    @Input() deviceDetail!: Device;
+
+    @Output() updateDetail = new EventEmitter();
 
   constructor(
-    private router: Router,
-    private deviceService: DeviceService
-    ) { }
+      private route: Router,
+      private deviceService: DeviceService
+      ) { }
 
   ngOnInit(): void {
+  }
 
-  }
+updateList(id:number){
+    this.route.navigate([`/update/${id}`]);
+}
+
   
-  updateDevice(id:any){
-    this.router.navigate([`/update/${id}`]);
-  }
 
 }
